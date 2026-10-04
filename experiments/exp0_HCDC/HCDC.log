@@ -3,27 +3,27 @@
 File: bib
 ============================================================
 Original length: 778827 bits
-Encoded length: 966707
-Number of iterations: 8
-Compression percentage: -24.1%
+Encoded length: 661886
+Number of iterations: 1
+Compression percentage: 15.0%
 FILES ARE IDENTICAL
 
 ============================================================
 File: book1
 ============================================================
 Original length: 5381397 bits
-Encoded length: 5962264
-Number of iterations: 8
-Compression percentage: -10.8%
+Encoded length: 4186215
+Number of iterations: 2
+Compression percentage: 22.2%
 FILES ARE IDENTICAL
 
 ============================================================
 File: book2
 ============================================================
 Original length: 4275992 bits
-Encoded length: 4910498
-Number of iterations: 8
-Compression percentage: -14.8%
+Encoded length: 3428259
+Number of iterations: 1
+Compression percentage: 19.8%
 FILES ARE IDENTICAL
 
 ============================================================
@@ -36,9 +36,9 @@ The current direct 7-bit representation is not suitable.
 File: news
 ============================================================
 Original length: 2639763 bits
-Encoded length: 3184960
-Number of iterations: 8
-Compression percentage: -20.7%
+Encoded length: 2217976
+Number of iterations: 1
+Compression percentage: 16.0%
 FILES ARE IDENTICAL
 
 ============================================================
@@ -57,18 +57,18 @@ The current direct 7-bit representation is not suitable.
 File: paper1
 ============================================================
 Original length: 372127 bits
-Encoded length: 442626
-Number of iterations: 8
-Compression percentage: -18.9%
+Encoded length: 307396
+Number of iterations: 1
+Compression percentage: 17.4%
 FILES ARE IDENTICAL
 
 ============================================================
 File: paper2
 ============================================================
 Original length: 575393 bits
-Encoded length: 649917
-Number of iterations: 8
-Compression percentage: -13.0%
+Encoded length: 454293
+Number of iterations: 2
+Compression percentage: 21.0%
 FILES ARE IDENTICAL
 
 ============================================================
@@ -81,61 +81,61 @@ The current direct 7-bit representation is not suitable.
 File: progc
 ============================================================
 Original length: 277277 bits
-Encoded length: 337954
-Number of iterations: 8
-Compression percentage: -21.9%
+Encoded length: 236287
+Number of iterations: 1
+Compression percentage: 14.8%
 FILES ARE IDENTICAL
 
 ============================================================
 File: progl
 ============================================================
 Original length: 501522 bits
-Encoded length: 580085
-Number of iterations: 8
-Compression percentage: -15.7%
+Encoded length: 407314
+Number of iterations: 1
+Compression percentage: 18.8%
 FILES ARE IDENTICAL
 
 ============================================================
 File: progp
 ============================================================
 Original length: 345653 bits
-Encoded length: 398529
-Number of iterations: 8
-Compression percentage: -15.3%
+Encoded length: 286879
+Number of iterations: 2
+Compression percentage: 17.0%
 FILES ARE IDENTICAL
 
 ============================================================
 File: trans
 ============================================================
 Original length: 655865 bits
-Encoded length: 851859
-Number of iterations: 8
-Compression percentage: -29.9%
+Encoded length: 586221
+Number of iterations: 1
+Compression percentage: 10.6%
 FILES ARE IDENTICAL
 
 ============================================================
 File: bible.txt
 ============================================================
 Original length: 28331744 bits
-Encoded length: 29697325
-Number of iterations: 8
-Compression percentage: -4.8%
+Encoded length: 20952620
+Number of iterations: 2
+Compression percentage: 26.0%
 FILES ARE IDENTICAL
 
 ============================================================
 File: E.coli
 ============================================================
 Original length: 32470830 bits
-Encoded length: 24591719
-Number of iterations: 8
-Compression percentage: 24.3%
+Encoded length: 18176314
+Number of iterations: 3
+Compression percentage: 44.0%
 FILES ARE IDENTICAL
 
 ============================================================
 File: world192.txt
 ============================================================
 Original length: 17313800 bits
-Encoded length: 20701415
-Number of iterations: 8
-Compression percentage: -19.6%
+Encoded length: 14359802
+Number of iterations: 1
+Compression percentage: 17.1%
 FILES ARE IDENTICAL

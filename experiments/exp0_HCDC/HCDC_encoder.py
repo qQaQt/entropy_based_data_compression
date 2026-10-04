@@ -125,12 +125,12 @@ def encode_n_times(data):
     encoded_data = np.asarray(data, dtype=np.uint8)
     headers = []
     iteration = 0
-    while iteration < 8:
+    while iteration < 255:
         current_len = len(encoded_data)
         new_header, new_encoded_data = full_encode(encoded_data)
         new_len = len(new_encoded_data)
-        #if new_len >= current_len:
-        #    break
+        if new_len >= current_len:
+            break
         encoded_data = new_encoded_data
         headers.append(new_header)
         iteration += 1
