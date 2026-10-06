@@ -27,33 +27,6 @@ Compression percentage: 19.8%
 FILES ARE IDENTICAL
 
 ============================================================
-File: geo
-============================================================
-SKIPPED: The file contains values >= 128
-The current direct 7-bit representation is not suitable.
-
-============================================================
-File: news
-============================================================
-Original length: 2639763 bits
-Encoded length: 2217976
-Number of iterations: 1
-Compression percentage: 16.0%
-FILES ARE IDENTICAL
-
-============================================================
-File: obj1
-============================================================
-SKIPPED: The file contains values >= 128
-The current direct 7-bit representation is not suitable.
-
-============================================================
-File: obj2
-============================================================
-SKIPPED: The file contains values >= 128
-The current direct 7-bit representation is not suitable.
-
-============================================================
 File: paper1
 ============================================================
 Original length: 372127 bits
@@ -72,70 +45,37 @@ Compression percentage: 21.0%
 FILES ARE IDENTICAL
 
 ============================================================
-File: pic
+File: paper3
 ============================================================
-SKIPPED: The file contains values >= 128
-The current direct 7-bit representation is not suitable.
-
-============================================================
-File: progc
-============================================================
-Original length: 277277 bits
-Encoded length: 236287
+Original length: 325682 bits
+Encoded length: 258450
 Number of iterations: 1
-Compression percentage: 14.8%
+Compression percentage: 20.6%
 FILES ARE IDENTICAL
 
 ============================================================
-File: progl
+File: paper4
 ============================================================
-Original length: 501522 bits
-Encoded length: 407314
-Number of iterations: 1
-Compression percentage: 18.8%
-FILES ARE IDENTICAL
-
-============================================================
-File: progp
-============================================================
-Original length: 345653 bits
-Encoded length: 286879
+Original length: 93002 bits
+Encoded length: 74164
 Number of iterations: 2
-Compression percentage: 17.0%
+Compression percentage: 20.3%
 FILES ARE IDENTICAL
 
 ============================================================
-File: trans
+File: paper5
 ============================================================
-Original length: 655865 bits
-Encoded length: 586221
+Original length: 83678 bits
+Encoded length: 68907
 Number of iterations: 1
-Compression percentage: 10.6%
+Compression percentage: 17.7%
 FILES ARE IDENTICAL
 
 ============================================================
-File: bible.txt
+File: paper6
 ============================================================
-Original length: 28331744 bits
-Encoded length: 20952620
-Number of iterations: 2
-Compression percentage: 26.0%
-FILES ARE IDENTICAL
-
-============================================================
-File: E.coli
-============================================================
-Original length: 32470830 bits
-Encoded length: 18176314
-Number of iterations: 3
-Compression percentage: 44.0%
-FILES ARE IDENTICAL
-
-============================================================
-File: world192.txt
-============================================================
-Original length: 17313800 bits
-Encoded length: 14359802
+Original length: 266735 bits
+Encoded length: 221888
 Number of iterations: 1
-Compression percentage: 17.1%
+Compression percentage: 16.8%
 FILES ARE IDENTICAL

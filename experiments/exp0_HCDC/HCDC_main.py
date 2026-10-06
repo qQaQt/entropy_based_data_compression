@@ -26,26 +26,20 @@ file_names = [
     "bib",
     "book1",
     "book2",
-    "geo",
-    "news",
-    "obj1",
-    "obj2",
     "paper1",
     "paper2",
-    "pic",
-    "progc",
-    "progl",
-    "progp",
-    "trans"
+    "paper3",
+    "paper4",
+    "paper5",
+    "paper6"
 ]
-
 large_file_names = [
     "bible.txt",
     "E.coli",
     "world192.txt"
 ]
 
-output_file_names = file_names + large_file_names
+output_file_names = file_names# + large_file_names
 
 output_dir = Path("dec_enc_data")
 output_dir.mkdir(parents=True, exist_ok=True)
