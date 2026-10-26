@@ -71,8 +71,10 @@ static int process_file(const char *name) {
         freq[bytes.data[i]]++;
     }
     for (size_t i = 0; i < 256; ++i) {
+        if (freq[i]) {
             p_x[i] = (double)freq[i] / (double)bytes.len;
             h_x -= p_x[i] * log2(p_x[i]);
+        }
     }
     log_print("Original length: %zu bits\n", input.len);
     log_print("Entropy: %.6f bits/symbol\n", h_x);
