@@ -6,6 +6,7 @@
 #include "hcdc_encoder.c"
 #include <stdarg.h>
 #include <errno.h>
+#include <math.h>
 #ifdef _WIN32
 #include <direct.h>
 #else
@@ -61,8 +62,20 @@ static int process_file(const char *name) {
               "============================================================\n", name);
     if (read_file(input_path, &bytes)) { log_print("ERROR: cannot read %s\n", input_path); goto done; }
     if (bytes.len > SIZE_MAX / 8 || bits_alloc(&input, bytes.len * 8)) goto done;
-    for (size_t i = 0; i < bytes.len; ++i) int_to_bits(bytes.data[i], 8, input.data + i*8);
+    size_t freq[256] = {0};
+    double p_x[256] = {0};
+    double h_x = 0;
+    for (size_t i = 0; i < bytes.len; ++i) {
+        int_to_bits(bytes.data[i], 8, input.data + i*8);
+        // entropy calculation
+        freq[bytes.data[i]]++;
+    }
+    for (size_t i = 0; i < 256; ++i) {
+            p_x[i] = (double)freq[i] / (double)bytes.len;
+            h_x -= p_x[i] * log2(p_x[i]);
+    }
     log_print("Original length: %zu bits\n", input.len);
+    log_print("Entropy: %.6f bits/symbol\n", h_x);
     int seven_bit = 1;
     for (size_t i = 0; i < bytes.len; ++i)
         if (bytes.data[i] >= 128) { seven_bit = 0; break; }
