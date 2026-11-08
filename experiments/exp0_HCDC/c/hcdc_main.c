@@ -1,8 +1,3 @@
-/* Build: cc -std=c11 -O2 -Wall -Wextra -Wpedantic hcdc_main.c -o hcdc_files
- * Requires hcdc_encoder.c and hcdc_decoder.c beside this file. Run from the directory containing data/.
- * File bytes use all 256 values and are represented by 8 bits each.
- * Uses the C two-table MSB-group format with its matching decoder.
- */
 #include "hcdc_encoder.c"
 #include <stdarg.h>
 #include <errno.h>

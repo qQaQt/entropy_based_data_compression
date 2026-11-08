@@ -2,24 +2,24 @@
 ============================================================
 File: bible.txt
 ============================================================
-Original length: 32379136 bits
-Entropy: 4.342751 bits/symbol
+Original length: 32622200 bits
+Entropy: 4.373769 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 20952655
+Encoded length: 21229911
 Number of iterations: 2
-Bits per symbol: 5.176829
-BIT STREAMS ARE IDENTICAL (32379136 bits)
+Bits per symbol: 5.206249
+BIT STREAMS ARE IDENTICAL (32622200 bits)
 
 ============================================================
 File: bib
 ============================================================
-Original length: 890088 bits
-Entropy: 5.200676 bits/symbol
+Original length: 940328 bits
+Entropy: 5.223599 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 661895
+Encoded length: 699247
 Number of iterations: 1
-Bits per symbol: 5.949030
-BIT STREAMS ARE IDENTICAL (890088 bits)
+Bits per symbol: 5.948962
+BIT STREAMS ARE IDENTICAL (940328 bits)
 
 ============================================================
 File: book1
@@ -35,13 +35,13 @@ BIT STREAMS ARE IDENTICAL (6150168 bits)
 ============================================================
 File: book2
 ============================================================
-Original length: 4886848 bits
-Entropy: 4.792633 bits/symbol
+Original length: 5011920 bits
+Entropy: 4.841456 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 3428268
+Encoded length: 3545980
 Number of iterations: 1
-Bits per symbol: 5.612236
-BIT STREAMS ARE IDENTICAL (4886848 bits)
+Bits per symbol: 5.660074
+BIT STREAMS ARE IDENTICAL (5011920 bits)
 
 ============================================================
 File: E.coli
@@ -68,13 +68,13 @@ BIT STREAMS ARE IDENTICAL (819200 bits)
 ============================================================
 File: news
 ============================================================
-Original length: 3016872 bits
-Entropy: 5.189632 bits/symbol
+Original length: 3097344 bits
+Entropy: 5.228618 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 2217985
+Encoded length: 2290753
 Number of iterations: 1
-Bits per symbol: 5.881549
-BIT STREAMS ARE IDENTICAL (3016872 bits)
+Bits per symbol: 5.916690
+BIT STREAMS ARE IDENTICAL (3097344 bits)
 
 ============================================================
 File: obj1
@@ -101,68 +101,68 @@ BIT STREAMS ARE IDENTICAL (1974512 bits)
 ============================================================
 File: paper1
 ============================================================
-Original length: 425288 bits
-Entropy: 4.982983 bits/symbol
+Original length: 435288 bits
+Entropy: 5.026331 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 307405
+Encoded length: 317023
 Number of iterations: 1
-Bits per symbol: 5.782529
-BIT STREAMS ARE IDENTICAL (425288 bits)
+Bits per symbol: 5.826451
+BIT STREAMS ARE IDENTICAL (435288 bits)
 
 ============================================================
 File: paper2
 ============================================================
-Original length: 657592 bits
-Entropy: 4.601435 bits/symbol
+Original length: 671440 bits
+Entropy: 4.651465 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 454316
-Number of iterations: 2
-Bits per symbol: 5.527026
-BIT STREAMS ARE IDENTICAL (657592 bits)
+Encoded length: 468939
+Number of iterations: 1
+Bits per symbol: 5.587263
+BIT STREAMS ARE IDENTICAL (671440 bits)
 
 ============================================================
 File: paper3
 ============================================================
-Original length: 372208 bits
-Entropy: 4.665104 bits/symbol
+Original length: 381008 bits
+Entropy: 4.715847 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 258459
+Encoded length: 266928
 Number of iterations: 1
-Bits per symbol: 5.555152
-BIT STREAMS ARE IDENTICAL (372208 bits)
+Bits per symbol: 5.604670
+BIT STREAMS ARE IDENTICAL (381008 bits)
 
 ============================================================
 File: paper4
 ============================================================
-Original length: 106288 bits
-Entropy: 4.699726 bits/symbol
+Original length: 108640 bits
+Entropy: 4.748584 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 74199
+Encoded length: 76551
 Number of iterations: 1
-Bits per symbol: 5.584751
-BIT STREAMS ARE IDENTICAL (106288 bits)
+Bits per symbol: 5.637040
+BIT STREAMS ARE IDENTICAL (108640 bits)
 
 ============================================================
 File: paper5
 ============================================================
-Original length: 95632 bits
-Entropy: 4.936154 bits/symbol
+Original length: 98192 bits
+Entropy: 4.981752 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 68916
+Encoded length: 71260
 Number of iterations: 1
-Bits per symbol: 5.765100
-BIT STREAMS ARE IDENTICAL (95632 bits)
+Bits per symbol: 5.805768
+BIT STREAMS ARE IDENTICAL (98192 bits)
 
 ============================================================
 File: paper6
 ============================================================
-Original length: 304840 bits
-Entropy: 5.009503 bits/symbol
+Original length: 312992 bits
+Entropy: 5.053183 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 221897
+Encoded length: 229134
 Number of iterations: 1
-Bits per symbol: 5.823304
-BIT STREAMS ARE IDENTICAL (304840 bits)
+Bits per symbol: 5.856610
+BIT STREAMS ARE IDENTICAL (312992 bits)
 
 ============================================================
 File: pic
@@ -178,35 +178,35 @@ BIT STREAMS ARE IDENTICAL (4105728 bits)
 ============================================================
 File: progc
 ============================================================
-Original length: 316888 bits
-Entropy: 5.199016 bits/symbol
+Original length: 328784 bits
+Entropy: 5.235410 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 236296
+Encoded length: 245588
 Number of iterations: 1
-Bits per symbol: 5.965414
-BIT STREAMS ARE IDENTICAL (316888 bits)
+Bits per symbol: 5.975668
+BIT STREAMS ARE IDENTICAL (328784 bits)
 
 ============================================================
 File: progl
 ============================================================
-Original length: 573168 bits
-Entropy: 4.770085 bits/symbol
+Original length: 591120 bits
+Entropy: 4.821461 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 407323
+Encoded length: 424462
 Number of iterations: 1
-Bits per symbol: 5.685216
-BIT STREAMS ARE IDENTICAL (573168 bits)
+Bits per symbol: 5.744512
+BIT STREAMS ARE IDENTICAL (591120 bits)
 
 ============================================================
 File: progp
 ============================================================
-Original length: 395032 bits
-Entropy: 4.868772 bits/symbol
+Original length: 410760 bits
+Entropy: 4.916743 bits/symbol
 Input mode: 7-bit (zero MSBs omitted)
-Encoded length: 286913
+Encoded length: 300387
 Number of iterations: 2
-Bits per symbol: 5.810425
-BIT STREAMS ARE IDENTICAL (395032 bits)
+Bits per symbol: 5.850365
+BIT STREAMS ARE IDENTICAL (410760 bits)
 
 ============================================================
 File: trans
