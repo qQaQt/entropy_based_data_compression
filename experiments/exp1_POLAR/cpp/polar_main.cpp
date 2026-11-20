@@ -6,12 +6,15 @@
 #include <vector>
 #include <iostream>
 #include <stdexcept>
+#include <unordered_map>
 #include <utility>
 #include <random>
 #include <vector>
 #include <cstdint>
 #include <cstddef>
 #include <stdexcept>
+#include <algorithm>
+#include <functional>
 
 
 struct ByteBuffer {
@@ -178,88 +181,197 @@ std::vector<uint8_t> bit_generator(double p, size_t size) {
 
     return bits;
 }
-int main() {
-    const size_t N = 4;
-    ByteBuffer bytes;
-    if (read_file("../../data/paper6", &bytes) != 0) {
-        printf("Error reading file %zu", read_file("../data/book1", &bytes));
-        return 1;
-    }
-    size_t bit_count;
-    //size_t total_bits = bytes.len * 8;
-    //size_t count = std::min(bit_count, total_bits);
-    //std::vector<uint8_t> dat = bytes_to_bits(bytes);
-buffer_free(&bytes);
 
-Matrix G = build_generator_matrix(N);
+#include <cmath>
 
-std::vector<uint8_t> dat = bit_generator(0.1, 12800);
-size_t Segm_block = dat.size() / N + (dat.size() % N != 0);
-    std::vector<std::vector<size_t>> counts(N);
-    std::vector<std::vector<size_t>> ones(N);
+double binary_entropy(double p) {
+    if (p <= 0.0 || p >= 1.0)
+        return 0.0;
+
+    return -p * std::log2(p)
+           - (1.0 - p) * std::log2(1.0 - p);
+}
+
+
+
+
+
+
+
+
+
+
+
+void exact_entropy(size_t N, const Matrix& G, double p) {
+
+    // Количество всех возможных входных блоков
+    size_t total_blocks = 1ULL << N;
+
+    // Вероятность префикса
+    std::vector<std::vector<double>> prefix_prob(N);
+
+    // Вероятность префикса и Ui = 1
+    std::vector<std::vector<double>> prefix_one_prob(N);
 
     for (size_t i = 0; i < N; ++i) {
-        counts[i].resize(1ULL << i, 0);
-        ones[i].resize(1ULL << i, 0);
+        prefix_prob[i].resize(1ULL << i, 0.0);
+        prefix_one_prob[i].resize(1ULL << i, 0.0);
     }
 
-for (size_t k = 0; k < Segm_block; ++k) {
+    // Перебираем все возможные X
+    for (size_t x = 0; x < total_blocks; ++x) {
 
-    std::vector<uint8_t> X(N, 0);
-    std::vector<uint8_t> U(N, 0);
-    // Заполняем входной блок
-    for (size_t j = 0; j < N; ++j) {
-        size_t index = k * N + j;
+        std::vector<uint8_t> X(N, 0);
+        std::vector<uint8_t> U(N, 0);
 
-        if (index < dat.size()) {
-            X[j] = dat[index];
-        }
-    }
+        size_t ones_count = 0;
 
-    // Полярное преобразование
-    for (size_t i = 0; i < N; ++i) {
+        // Заполняем X
         for (size_t j = 0; j < N; ++j) {
-            U[i] ^= X[j] & G[j][i];
+
+            X[j] = (x >> (N - 1 - j)) & 1;
+
+            ones_count += X[j];
+        }
+
+        // Вероятность данного блока X
+        double probability =
+            std::pow(p, ones_count) *
+            std::pow(1.0 - p, N - ones_count);
+
+        // Полярное преобразование U = XG
+        for (size_t i = 0; i < N; ++i) {
+            for (size_t j = 0; j < N; ++j) {
+                U[i] ^= X[j] & G[j][i];
+            }
+        }
+
+        // Собираем вероятности префиксов
+        for (size_t i = 0; i < N; ++i) {
+
+            size_t prefix = 0;
+
+            for (size_t j = 0; j < i; ++j) {
+                prefix = (prefix << 1) | U[j];
+            }
+
+            prefix_prob[i][prefix] += probability;
+
+            if (U[i] == 1) {
+                prefix_one_prob[i][prefix] += probability;
+            }
         }
     }
 
-    // Вывод результата
-    // for (size_t i = 0; i < N; ++i) {
-    //     std::cout << static_cast<int>(U[i]);
-
-    //     if ((i + 1) % 8 == 0)
-    //         std::cout << ' ';
-    // }
-
+    // Вычисляем условные энтропии
+    double H_total = 0.0;
 
     for (size_t i = 0; i < N; ++i) {
-        size_t prefix = 0;
-    
-        for (size_t j = 0; j < i; ++j) {
-            prefix = (prefix << 1) | U[j];
+
+        double H_i = 0.0;
+
+        for (size_t j = 0; j < (1ULL << i); ++j) {
+
+            double prob = prefix_prob[i][j];
+
+            if (prob == 0.0)
+                continue;
+
+            double q = prefix_one_prob[i][j] / prob;
+
+            H_i += prob * binary_entropy(q);
         }
-    
-        counts[i][prefix]++;
-    
-        if (U[i] == 1) {
-            ones[i][prefix]++;
+
+        std::cout << "H(U" << i << ") = "
+                  << H_i << '\n';
+
+        H_total += H_i;
+    }
+
+    std::cout << "Total entropy H(U) = "
+              << H_total << '\n';
+}
+
+// Population Monte Carlo for full source-polarization conditional entropies.
+// Each population represents posterior P(X=1 | a random preceding prefix).
+std::vector<double> estimate_polar_entropies(double p, size_t N, size_t samples) {
+    if (N == 0 || (N & (N - 1)) != 0 || samples == 0)
+        throw std::invalid_argument("N must be a power of two and samples must be positive");
+
+    std::mt19937_64 rng(std::random_device{}());
+    std::uniform_int_distribution<size_t> choose_sample(0, samples - 1);
+    std::vector<double> initial(samples, p);
+
+    std::function<std::vector<double>(const std::vector<double>&, size_t)> recurse;
+    recurse = [&](const std::vector<double>& posterior, size_t length) {
+        if (length == 1) {
+            double entropy = 0.0;
+            for (double q : posterior)
+                entropy += binary_entropy(q);
+            return std::vector<double>{entropy / posterior.size()};
         }
-    }
-for (size_t i = 0; i < N; ++i) {
-    for (size_t j = 0; j < (1ULL << i); ++j) {
-        std::cout << ones[i][j] << ' ';
-    }
-    std::cout << "                                              ";
-    for (size_t j = 0; j < (1ULL << i); ++j) {
-        std::cout << counts[i][j] << ' ';
-    }
-    std::cout << '\n';
+
+        std::vector<double> minus(samples), plus(samples);
+        std::uniform_real_distribution<double> uniform01(0.0, 1.0);
+
+        for (size_t k = 0; k < samples; ++k) {
+            const double q1 = posterior[choose_sample(rng)];
+            const double q2 = posterior[choose_sample(rng)];
+            const double parity_one = q1 * (1.0 - q2) + (1.0 - q1) * q2;
+            minus[k] = parity_one;
+
+            const bool parity_is_one = uniform01(rng) < parity_one;
+            if (parity_is_one) {
+                const double denominator = parity_one;
+                plus[k] = denominator > 0.0
+                    ? ((1.0 - q1) * q2) / denominator
+                    : 0.0;
+            } else {
+                const double parity_zero = 1.0 - parity_one;
+                plus[k] = parity_zero > 0.0
+                    ? (q1 * q2 + 0.0) / parity_zero
+                    : 0.0;
+            }
+        }
+
+        std::vector<double> result = recurse(minus, length / 2);
+        std::vector<double> right = recurse(plus, length / 2);
+        result.insert(result.end(), right.begin(), right.end());
+        return result;
+    };
+
+    return recurse(initial, N);
 }
-}
-    //print_matrix(G);
 
 
 
+int main() {
+    const size_t N = 64;
+    const double p = 0.1;
+
+    const size_t samples = 100000;
+    const double high_entropy_threshold = 0.9;
+    const std::vector<double> entropies =
+        estimate_polar_entropies(p, N, samples);
+
+    double entropy_sum = 0.0;
+    size_t high_entropy_count = 0;
+    std::cout << "Estimated full conditional entropies (population MC):\n";
+    for (size_t i = 0; i < entropies.size(); ++i) {
+        std::cout << "H(U" << i;
+        if (i > 0)
+            std::cout << " | U[0.." << i - 1 << "]";
+        std::cout << ") = " << entropies[i] << '\n';
+        entropy_sum += entropies[i];
+        if (entropies[i] >= high_entropy_threshold)
+            ++high_entropy_count;
+    }
+
+    std::cout << "Sum of conditional entropies = " << entropy_sum << '\n'
+              << "Theoretical H(U) = N*h2(p) = "
+              << N * binary_entropy(p) << '\n'
+              << "Positions with H >= " << high_entropy_threshold << ": "
+              << high_entropy_count << " / " << N << '\n';
 
     return 0;
-};
+}
